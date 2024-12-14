@@ -148,15 +148,15 @@ SpriteMorph.prototype.categories =
     ];
 
 SpriteMorph.prototype.blockColor = {
-    motion : new Color(255, 0, 0),
-    looks : new Color(252, 173, 3),
-    sound : new Color(189, 173, 0),
-    pen : new Color(0, 189, 0),
-    control : new Color(3, 78, 252),
-    sensing : new Color(231, 3, 252),
-    operators : new Color(150, 150, 150),
-    variables : new Color(65, 150, 139),
-    lists : new Color(100, 100, 100),
+    motion : new Color(99, 154, 255),
+    looks : new Color(188, 0, 191),
+    sound : new Color(255, 66, 230),
+    pen : new Color(28, 186, 120),
+    control : new Color(222, 189, 0),
+    sensing : new Color(16, 132, 179),
+    operators : new Color(10, 217, 0),
+    variables : new Color(230, 149, 28),
+    lists : new Color(227, 34, 34),
     other: new Color(33, 61, 57)
 };
 
@@ -230,7 +230,7 @@ SpriteMorph.prototype.initBlocks = function () {
             only: SpriteMorph,
             type: 'command',
             category: 'motion',
-            spec: '$🌀-2.5 teleport to %dst',
+            spec: '$🌀-2.5 go to %dst',
             defaults: [['random position']]
         },
          doGlide: {
@@ -327,7 +327,7 @@ SpriteMorph.prototype.initBlocks = function () {
             only: SpriteMorph,
             type: 'command',
             category: 'looks',
-            spec: 'change size $🌱-2.5 by %n',
+            spec: 'change size $🌱-1.5 $arrowRightThin $🌱-2.5 by %n',
             defaults: [10]
         },
         setScale: {
@@ -390,12 +390,12 @@ SpriteMorph.prototype.initBlocks = function () {
         playSound: {
             type: 'command',
             category: 'sound',
-            spec: 'play sound %snd'
+            spec: 'start $🔊-2.5 %snd'
         },
         doPlaySoundUntilDone: {
             type: 'command',
             category: 'sound',
-            spec: 'play sound %snd until done'
+            spec: 'play $🔊-2.5 %snd'
         },
         doPlaySoundAtRate: {
             type: 'command',
@@ -406,7 +406,7 @@ SpriteMorph.prototype.initBlocks = function () {
         doStopAllSounds: {
             type: 'command',
             category: 'sound',
-            spec: 'stop all sounds'
+            spec: '$🛑-2.5 $🔊-2.5'
         },
         reportGetSoundAttribute: {
             type: 'reporter',
@@ -465,19 +465,19 @@ SpriteMorph.prototype.initBlocks = function () {
         changeVolume: {
             type: 'command',
             category: 'sound',
-            spec: 'change volume by %n',
+            spec: '$🔊-1.5 $🔊-2.5 change $🔊-2.5 by %n',
             defaults: [10]
         },
         setVolume: {
             type: 'command',
             category: 'sound',
-            spec: 'set volume to %n %',
+            spec: '$🔊-1.5 $🔊-2.5 set $🔊-2.5 to %n %',
             defaults: [100]
         },
         getVolume: {
             type: 'reporter',
             category: 'sound',
-            spec: 'volume'
+            spec: '$🔊-1.5 $🔊-2.5'
         },
         changePan: {
             type: 'command',
@@ -520,31 +520,31 @@ SpriteMorph.prototype.initBlocks = function () {
         clear: {
             type: 'command',
             category: 'pen',
-            spec: 'clear'
+            spec: '$eraser-2.5 clear'
         },
         down: {
             only: SpriteMorph,
             type: 'command',
             category: 'pen',
-            spec: 'pen down'
+            spec: '$✍️-2.5'
         },
         up: {
             only: SpriteMorph,
             type: 'command',
             category: 'pen',
-            spec: 'pen up'
+            spec: '$✍️-2.5 $🛑-2.5'
         },
         getPenDown: {
             only: SpriteMorph,
             type: 'predicate',
             category: 'pen',
-            spec: 'pen down?'
+            spec: '$✍️-2.5 $?-2.5'
         },
         setColor: {
             only: SpriteMorph,
             type: 'command',
             category: 'pen',
-            spec: 'set pen color to %clr'
+            spec: '$🖍-2.5 %clr'
         },
         setPenHSVA: {
             only: SpriteMorph,
@@ -590,14 +590,14 @@ SpriteMorph.prototype.initBlocks = function () {
             only: SpriteMorph,
             type: 'command',
             category: 'pen',
-            spec: 'change pen size by %n',
+            spec: 'Change $🖍-1.5 $🖍-2.5 by %n',
             defaults: [1]
         },
         setSize: {
             only: SpriteMorph,
             type: 'command',
             category: 'pen',
-            spec: 'set pen size to %n',
+            spec: 'set $🖍-2.5 size to %n',
             defaults: [1]
         },
         doStamp: {
@@ -649,7 +649,7 @@ SpriteMorph.prototype.initBlocks = function () {
         receiveKey: {
             type: 'hat',
             category: 'control',
-            spec: 'when %keyHat key pressed',
+            spec: '$⌨️-2.5 %keyHat key pressed',
             defaults: [['space']]
         },
         receiveInteraction: {
@@ -661,7 +661,7 @@ SpriteMorph.prototype.initBlocks = function () {
         receiveMessage: {
             type: 'hat',
             category: 'control',
-            spec: 'when I receive %msgHat'
+            spec: 'when I get $✉️-2.5 %msgHat'
         },
         receiveCondition: {
             type: 'hat',
@@ -671,7 +671,7 @@ SpriteMorph.prototype.initBlocks = function () {
         doBroadcast: {
             type: 'command',
             category: 'control',
-            spec: 'broadcast %msg'
+            spec: 'send $✉️-2.5 %msg'
         },
         doBroadcastAndWait: {
             type: 'command',
@@ -681,7 +681,7 @@ SpriteMorph.prototype.initBlocks = function () {
         getLastMessage: {
             type: 'reporter',
             category: 'control',
-            spec: 'message'
+            spec: '$✉️-2.5'
         },
         doSend: {
             type: 'command',
@@ -691,23 +691,23 @@ SpriteMorph.prototype.initBlocks = function () {
         doWait: {
             type: 'command',
             category: 'control',
-            spec: 'wait %n secs',
+            spec: '$⌛-2.5 wait %n',
             defaults: [1]
         },
         doWaitUntil: {
             type: 'command',
             category: 'control',
-            spec: 'wait until %b'
+            spec: '$⌛-2.5 wait for %b'
         },
         doForever: {
             type: 'command',
             category: 'control',
-            spec: 'forever %loop'
+            spec: '$♾-2.5 $Forever-1.5 %loop'
         },
         doRepeat: {
             type: 'command',
             category: 'control',
-            spec: 'repeat %n %loop',
+            spec: '$🔁-2.5 repeat %n times: %loop',
             defaults: [10]
         },
         doUntil: {
@@ -724,12 +724,12 @@ SpriteMorph.prototype.initBlocks = function () {
         doIf: {
             type: 'command',
             category: 'control',
-            spec: 'if %b %c'
+            spec: 'if $-2.5 %b %c'
         },
         doIfElse: {
             type: 'command',
             category: 'control',
-            spec: 'if %b %c else %c'
+            spec: 'if $-2.5 %b %c else $-2.5 %c'
         },
         reportIfElse: {
             type: 'reporter',
@@ -739,7 +739,7 @@ SpriteMorph.prototype.initBlocks = function () {
         doStopThis: {
             type: 'command',
             category: 'control',
-            spec: 'stop %stopChoices',
+            spec: '$🛑-2.5 %stopChoices',
             defaults: [['all']]
         },
         doRun: {
@@ -760,7 +760,7 @@ SpriteMorph.prototype.initBlocks = function () {
         doReport: {
             type: 'command',
             category: 'control',
-            spec: 'report %s'
+            spec: '$loop %s'
         },
         doCallCC: {
             type: 'command',
@@ -775,7 +775,7 @@ SpriteMorph.prototype.initBlocks = function () {
         doWarp: {
             type: 'command',
             category: 'other',
-            spec: 'warp %c'
+            spec: 'quick $💨-2.5 %c'
         },
 
         // Message passing
@@ -795,12 +795,12 @@ SpriteMorph.prototype.initBlocks = function () {
         receiveOnClone: {
             type: 'hat',
             category: 'control',
-            spec: 'when I start as a clone'
+            spec: 'when I am a $👥-2.5'
         },
         createClone: {
             type: 'command',
             category: 'control',
-            spec: 'create a clone of %cln',
+            spec: '$👥-2.5 new clone of %cln',
             defaults: [['myself']]
         },
         newClone: {
@@ -812,14 +812,14 @@ SpriteMorph.prototype.initBlocks = function () {
         removeClone: {
             type: 'command',
             category: 'control',
-            spec: 'delete this clone'
+            spec: 'delete $👥-2.5 $🚫-2.5'
         },
 
         // Debugging - pausing
         doPauseAll: {
             type: 'command',
             category: 'control',
-            spec: 'pause all %pause'
+            spec: '$pause-2.5-255-220-0'
         },
 
         // Sensing
@@ -827,20 +827,20 @@ SpriteMorph.prototype.initBlocks = function () {
             only: SpriteMorph,
             type: 'predicate',
             category: 'sensing',
-            spec: 'touching %col ?',
+            spec: 'touching $👉-2.5 %col $?-2.5',
             defaults: [['mouse-pointer']]
         },
         reportTouchingColor: {
             only: SpriteMorph,
             type: 'predicate',
             category: 'sensing',
-            spec: 'touching %clr ?'
+            spec: 'touching $👉-2.5 $🎨-2.5 %clr $?-2.5'
         },
         reportColorIsTouchingColor: {
             only: SpriteMorph,
             type: 'predicate',
             category: 'sensing',
-            spec: 'color %clr is touching %clr ?'
+            spec: ' $🎨-2.5 %clr touching $👉-2.5 $🎨-2.5 %clr $?-2.5'
         },
         reportAspect: {
             type: 'reporter',
@@ -875,7 +875,7 @@ SpriteMorph.prototype.initBlocks = function () {
         doAsk: {
             type: 'command',
             category: 'sensing',
-            spec: 'ask %s and wait',
+            spec: 'ask $🧐-2.5 $⌨️-2.5 %s',
             defaults: [localize('what\'s your name?')]
         },
         reportLastAnswer: { // retained for legacy compatibility
@@ -887,27 +887,27 @@ SpriteMorph.prototype.initBlocks = function () {
         getLastAnswer: {
             type: 'reporter',
             category: 'sensing',
-            spec: 'answer'
+            spec: '$✅-2.5 answer'
         },
         reportMouseX: {
             type: 'reporter',
             category: 'sensing',
-            spec: 'mouse x'
+            spec: '$🖱️-2.5 $arrowLeftRightThin'
         },
         reportMouseY: {
             type: 'reporter',
             category: 'sensing',
-            spec: 'mouse y'
+            spec: '$🖱️-2.5 $arrowUpDownThin'
         },
         reportMouseDown: {
             type: 'predicate',
             category: 'sensing',
-            spec: 'mouse down?'
+            spec: '$🖱️-2.5 pressed $?-2.5'
         },
         reportKeyPressed: {
             type: 'predicate',
             category: 'sensing',
-            spec: 'key %key pressed?',
+            spec: '$⌨️-2.5 %key pressed $?-2.5',
             defaults: [['space']]
         },
         reportRelationTo: {
@@ -920,7 +920,7 @@ SpriteMorph.prototype.initBlocks = function () {
         doResetTimer: {
             type: 'command',
             category: 'sensing',
-            spec: 'reset timer'
+            spec: 'reset $⏲️-2.5'
         },
         reportTimer: { // retained for legacy compatibility
             dev: true,
@@ -931,7 +931,7 @@ SpriteMorph.prototype.initBlocks = function () {
         getTimer: {
             type: 'reporter',
             category: 'sensing',
-            spec: 'timer'
+            spec: '$⏲️-2.5'
         },
         reportAttributeOf: {
             type: 'reporter',
@@ -948,7 +948,7 @@ SpriteMorph.prototype.initBlocks = function () {
         reportURL: {
             type: 'reporter',
             category: 'sensing',
-            spec: 'url %s',
+            spec: 'url $🔗-2.5 $🌐-2.5 %s',
             defaults: ['snap.berkeley.edu']
         },
         doSetGlobalFlag: {
@@ -966,7 +966,7 @@ SpriteMorph.prototype.initBlocks = function () {
         reportDate: {
             type: 'reporter',
             category: 'sensing',
-            spec: 'current %dates',
+            spec: 'current $🕑-2.5 %dates',
             defaults: [['date']]
         },
         reportGet: {
@@ -1004,24 +1004,24 @@ SpriteMorph.prototype.initBlocks = function () {
         reportSum: {
             type: 'reporter',
             category: 'operators',
-            spec: '%n + %n'
+            spec: '%n $+-2.5 %n'
         },
         reportDifference: {
             type: 'reporter',
             category: 'operators',
-            spec: '%n \u2212 %n',
+            spec: '%n $—-2.5 %n',
             alias: '-'
         },
         reportProduct: {
             type: 'reporter',
             category: 'operators',
-            spec: '%n \u00D7 %n',
+            spec: '%n $\u00D7-2.5 %n',
             alias: '*'
         },
         reportQuotient: {
             type: 'reporter',
             category: 'operators',
-            spec: '%n / %n' // '%n \u00F7 %n'
+            spec: '%n $÷-2.5 %n' // '%n \u00F7 %n'
         },
         reportRound: {
             type: 'reporter',
@@ -1062,13 +1062,13 @@ SpriteMorph.prototype.initBlocks = function () {
         reportRandom: {
             type: 'reporter',
             category: 'operators',
-            spec: 'pick random %n to %n',
+            spec: '$🎲-2.5 %n to %n',
             defaults: [1, 10]
         },
         reportEquals: {
             type: 'predicate',
             category: 'operators',
-            spec: '%s = %s'
+            spec: '%s $=-2.5 %s'
         },
         reportNotEquals: {
             type: 'predicate',
@@ -1078,7 +1078,7 @@ SpriteMorph.prototype.initBlocks = function () {
         reportLessThan: {
             type: 'predicate',
             category: 'operators',
-            spec: '%s < %s'
+            spec: '%s $<-2.5 %s'
         },
         reportLessThanOrEquals: {
             type: 'predicate',
@@ -1088,7 +1088,7 @@ SpriteMorph.prototype.initBlocks = function () {
         reportGreaterThan: {
             type: 'predicate',
             category: 'operators',
-            spec: '%s > %s'
+            spec: '%s $>-2.5 %s'
         },
         reportGreaterThanOrEquals: {
             type: 'predicate',
@@ -1098,22 +1098,22 @@ SpriteMorph.prototype.initBlocks = function () {
         reportAnd: {
             type: 'predicate',
             category: 'operators',
-            spec: '%b and %b'
+            spec: '%b $-2.5 and $-2.5 %b'
         },
         reportOr: {
             type: 'predicate',
             category: 'operators',
-            spec: '%b or %b'
+            spec: '%b $-2.5 or $-2.5 %b'
         },
         reportNot: {
             type: 'predicate',
             category: 'operators',
-            spec: 'not %b'
+            spec: 'not $-2.5 %b'
         },
         reportBoolean: {
             type: 'predicate',
             category: 'operators',
-            spec: '%bool',
+            spec: '$-2.5 %bool $-2.5',
             defaults: [true],
             alias: 'true boolean'
         },
@@ -1127,19 +1127,19 @@ SpriteMorph.prototype.initBlocks = function () {
         reportJoinWords: {
             type: 'reporter',
             category: 'operators',
-            spec: 'join %words',
+            spec: '$🔗-2.5 join %words',
             defaults: [localize('hello') + ' ', localize('world')]
         },
         reportLetter: {
             type: 'reporter',
             category: 'operators',
-            spec: 'letter %idx of %s',
+            spec: 'letter $-2.5 %idx $-2.5 of %s',
             defaults: [1, localize('world')]
         },
         reportStringSize: {
             type: 'reporter',
             category: 'operators',
-            spec: 'length of %s',
+            spec: '$-2.5 length of %s $-2.5',
             defaults: [localize('world')]
         },
         reportUnicode: {
@@ -2361,32 +2361,10 @@ SpriteMorph.prototype.blockTemplates = function (category) {
         blocks.push(block('doPlaySoundUntilDone'));
         blocks.push(block('doStopAllSounds'));
         blocks.push('-');
-        blocks.push(block('doPlaySoundAtRate'));
-        blocks.push(block('reportGetSoundAttribute'));
-        blocks.push(block('reportNewSoundFromSamples'));
-        blocks.push('-');
-        blocks.push(block('doRest'));
-        blocks.push(block('doPlayNote'));
-        blocks.push(block('doSetInstrument'));
-        blocks.push('-');
-        blocks.push(block('doChangeTempo'));
-        blocks.push(block('doSetTempo'));
-        blocks.push(watcherToggle('getTempo'));
-        blocks.push(block('getTempo'));
-        blocks.push('-');
         blocks.push(block('changeVolume'));
         blocks.push(block('setVolume'));
         blocks.push(watcherToggle('getVolume'));
         blocks.push(block('getVolume', this.inheritsAttribute('volume')));
-        blocks.push('-');
-        blocks.push(block('changePan'));
-        blocks.push(block('setPan'));
-        blocks.push(watcherToggle('getPan'));
-        blocks.push(block('getPan', this.inheritsAttribute('balance')));
-        blocks.push('-');
-        blocks.push(block('playFreq'));
-        blocks.push(block('stopFreq'));
-
     // for debugging: ///////////////
 
         if (this.world().isDevMode) {
@@ -2416,21 +2394,9 @@ SpriteMorph.prototype.blockTemplates = function (category) {
         blocks.push(block('getPenDown', this.inheritsAttribute('pen down?')));
         blocks.push('-');
         blocks.push(block('setColor'));
-        blocks.push(block('changePenHSVA'));
-        blocks.push(block('setPenHSVA'));
-        blocks.push(block('getPenAttribute'));
         blocks.push('-');
         blocks.push(block('changeSize'));
         blocks.push(block('setSize'));
-        blocks.push('-');
-        blocks.push(block('doStamp'));
-        blocks.push(block('floodFill'));
-        blocks.push(block('write'));
-        blocks.push('-');
-        blocks.push(block('reportPenTrailsAsCostume'));
-        blocks.push('-');
-        blocks.push(block('doPasteOn'));
-        blocks.push(block('doCutFrom'));
         blocks.push('=');
         blocks.push(this.makeBlockButton(cat));
 
@@ -2439,12 +2405,9 @@ SpriteMorph.prototype.blockTemplates = function (category) {
         blocks.push(block('receiveGo'));
         blocks.push(block('receiveKey'));
         blocks.push(block('receiveInteraction'));
-        blocks.push(block('receiveCondition'));
         blocks.push(block('receiveMessage'));
         blocks.push('-');
         blocks.push(block('doBroadcast'));
-        blocks.push(block('doBroadcastAndWait'));
-        blocks.push(block('doSend'));
         blocks.push(watcherToggle('getLastMessage'));
         blocks.push(block('getLastMessage'));
         blocks.push('-');
@@ -2455,8 +2418,6 @@ SpriteMorph.prototype.blockTemplates = function (category) {
         blocks.push('-');
         blocks.push(block('doForever'));
         blocks.push(block('doRepeat'));
-        blocks.push(block('doUntil'));
-        blocks.push(block('doFor'));
         blocks.push('-');
         blocks.push(block('doIf'));
         blocks.push(block('doIfElse'));
@@ -2465,19 +2426,8 @@ SpriteMorph.prototype.blockTemplates = function (category) {
         blocks.push(block('doReport'));
         blocks.push(block('doStopThis'));
         blocks.push('-');
-        blocks.push(block('doRun'));
-        blocks.push(block('fork'));
-        blocks.push(block('evaluate'));
-        blocks.push('-');
-        blocks.push(block('doTellTo'));
-        blocks.push(block('reportAskFor'));
-        blocks.push('-');
-        blocks.push(block('doCallCC'));
-        blocks.push(block('reportCallCC'));
-        blocks.push('-');
         blocks.push(block('receiveOnClone'));
         blocks.push(block('createClone'));
-        blocks.push(block('newClone'));
         blocks.push(block('removeClone'));
         blocks.push('-');
         blocks.push(block('doPauseAll'));
@@ -2502,28 +2452,16 @@ SpriteMorph.prototype.blockTemplates = function (category) {
         blocks.push('-');
         blocks.push(block('reportKeyPressed'));
         blocks.push('-');
-        blocks.push(block('reportRelationTo'));
-        blocks.push(block('reportAspect'));
-        blocks.push('-');
         blocks.push(block('doResetTimer'));
         blocks.push(watcherToggle('getTimer'));
         blocks.push(block('getTimer'));
         blocks.push('-');
-        blocks.push(block('reportAttributeOf'));
 
         if (SpriteMorph.prototype.enableFirstClass) {
-            blocks.push(block('reportGet'));
+           
         }
 
-        blocks.push(block('reportObject'));
-        blocks.push('-');
         blocks.push(block('reportURL'));
-        blocks.push(block('reportAudio'));
-        blocks.push(block('reportVideo'));
-        blocks.push(block('doSetVideoTransparency'));
-        blocks.push('-');
-        blocks.push(block('reportGlobalFlag'));
-        blocks.push(block('doSetGlobalFlag'));
         blocks.push('-');
         blocks.push(block('reportDate'));
 
@@ -2562,11 +2500,7 @@ SpriteMorph.prototype.blockTemplates = function (category) {
         blocks.push(block('reportDifference'));
         blocks.push(block('reportProduct'));
         blocks.push(block('reportQuotient'));
-        blocks.push(block('reportPower'));
         blocks.push('-');
-        blocks.push(block('reportModulus'));
-        blocks.push(block('reportRound'));
-        blocks.push(block('reportMonadic'));
         blocks.push(block('reportRandom'));
         blocks.push('-');
         blocks.push(block('reportLessThan'));
@@ -2579,15 +2513,9 @@ SpriteMorph.prototype.blockTemplates = function (category) {
         blocks.push(block('reportBoolean'));
         blocks.push('-');
         blocks.push(block('reportJoinWords'));
-        blocks.push(block('reportTextSplit'));
         blocks.push(block('reportLetter'));
         blocks.push(block('reportStringSize'));
         blocks.push('-');
-        blocks.push(block('reportUnicode'));
-        blocks.push(block('reportUnicodeAsLetter'));
-        blocks.push('-');
-        blocks.push(block('reportIsA'));
-        blocks.push(block('reportIsIdentical'));
 
         if (Process.prototype.enableJS) {
             blocks.push('-');

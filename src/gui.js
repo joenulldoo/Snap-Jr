@@ -1,4 +1,4 @@
-/* 1085
+/*
 
     gui.js
 
@@ -6,10 +6,10 @@
     based on morphic.js, blocks.js, threads.js and objects.js
     inspired by Scratch
 
-    written by Jens Mönig
+    written by Jens MÃ¶nig
     jens@moenig.org
 
-    Copyright (C) 2021 by Jens Mönig
+    Copyright (C) 2021 by Jens MÃ¶nig
 
     This file is part of Snap!.
 
@@ -152,7 +152,7 @@ IDE_Morph.prototype.setDefaultDesign = function () {
 IDE_Morph.prototype.setFlatDesign = function () {
     MorphicPreferences.isFlat = true;
     SpriteMorph.prototype.paletteColor = WHITE;
-    SpriteMorph.prototype.paletteTextColor = new Color(70, 70, 70);
+    SpriteMorph.prototype.paletteTextColor = new Color(220, 220, 230);
     StageMorph.prototype.paletteTextColor
         = SpriteMorph.prototype.paletteTextColor;
     StageMorph.prototype.paletteColor = SpriteMorph.prototype.paletteColor;
@@ -204,7 +204,9 @@ IDE_Morph.prototype.scriptsTexture = function () {
     return pic;
 };
 
-IDE_Morph.prototype.setDefaultDesign();
+IDE_Morph.prototype.setFlatDesign();
+
+
 
 // IDE_Morph instance creation:
 
@@ -232,10 +234,10 @@ IDE_Morph.prototype.init = function (isAutoFill) {
     this.globalVariables = new VariableFrame();
     this.currentSprite = new SpriteMorph(this.globalVariables);
     this.sprites = new List([this.currentSprite]);
-    this.currentCategory = 'motion';
-    this.currentTab = 'scripts';
-    this.projectName = '';
-    this.projectNotes = '';
+    this.currentCategory = 'null';
+    this.currentTab = 'null';
+    this.projectName = 'New Snap! Jr. Project';
+    this.projectNotes = 'No project notes.';
 
     this.trash = []; // deleted sprites
 
@@ -438,7 +440,7 @@ IDE_Morph.prototype.openIn = function (world) {
                     projectData => {
                         var msg;
                         this.nextSteps([
-                            () => msg = this.showMessage('Opening project...'),
+                            () => msg = this.showMessage('Get Ready...'),
                             () => {
                                 if (projectData.indexOf('<snapdata') === 0) {
                                     this.rawOpenCloudDataString(projectData);
@@ -505,7 +507,7 @@ IDE_Morph.prototype.openIn = function (world) {
                     projectData => {
                         var msg;
                         this.nextSteps([
-                            () => msg = this.showMessage('Opening project...'),
+                            () => msg = this.showMessage('Get Ready...'),
                             () => {
                                 if (projectData.indexOf('<snapdata') === 0) {
                                     this.rawOpenCloudDataString(projectData);
@@ -544,7 +546,7 @@ IDE_Morph.prototype.openIn = function (world) {
                 projectData => {
                     var msg;
                     myself.nextSteps([
-                        () => msg = myself.showMessage('Opening project...'),
+                        () => msg = myself.showMessage('Get Ready...'),
                         () => {
                             if (projectData.indexOf('<snapdata') === 0) {
                                 myself.rawOpenCloudDataString(projectData);
@@ -581,7 +583,7 @@ IDE_Morph.prototype.openIn = function (world) {
                 projectData => {
                     var msg;
                     myself.nextSteps([
-                        () => msg = myself.showMessage('Opening project...'),
+                        () => msg = myself.showMessage('Get Ready...'),
                         () => {
                             if (projectData.indexOf('<snapdata') === 0) {
                                 myself.rawOpenCloudDataString(projectData);
@@ -615,7 +617,7 @@ IDE_Morph.prototype.openIn = function (world) {
                 projectData => {
                 	myself.saveXMLAs(projectData, dict.ProjectName);
                  	myself.showMessage(
-                  	   'Saved project\n' + dict.ProjectName,
+                  	   'Saved!\n' + dict.ProjectName,
                       	2
                  	);
                 },
@@ -698,62 +700,7 @@ IDE_Morph.prototype.createLogo = function () {
     // otherwise would be compromised by annoying browser security.
 
     // this.logo.texture = this.logoURL; // original code, commented out
-    this.logo.texture = "data:image/png;base64," +
-        "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" +
-        "gg==";
+    this.logo.texture = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAjCAYAAACU9ioYAAAACXBIWXMAAAjZAAAJkwG5BvdyAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAvNJREFUSInllU9oVFcUxn/ffS9jE2MKiZlB0kVMJ2bUaBcWlbYLu2ihNhOwJUihuBApgigKot1I3ZZ2U6iL1j8baQtaqIwj0iqlm7aLuhCpmonBiFUyUzGLZOKMM847XUzGDnHGJqMLpW/17ve+83vn3HO4V2bG03zcU6U9F0C/epFOxN6Ugn7nhU52bvwz3QhQlaakE7EhyU7M6DcCZVcuGbh9b77AhyVLtqlK70ataxrJsApIqkovhIzrjQAf7mGJ7GfSwgimVUhfdAwM324EqP/fYPsA42eWLfcCHa+Ihgpy9mH43dScGpM+29upvCmyafRvmRnjidirTvbHLN9wkx+sa3/n2mRFyCSX7ZJpi8lO5VqLn7dMhQ4abAM6AO67Be3lkp1lgcvARBUwVijq0+o/CLoM1mCup3kqdMZgP9AOTAM4P5ADWDKQGo7EU/2ReKojt6jQjPFBGaD1tYu094HXDXYEyrZG4qlWZ6XeyUmy/mxr94ax/I1flp5qngrlEC/X2bY2Ydsj8ZGvKkLn4OhoJ3W63L1hLA/8BizK/BAN17DcDY+3HasV+7ix+RlATXokSzOu8NGF4ryAEvlytIvW+HarXtwjewiQ+emVhRj7AEwsr2GZrgesnWEhtweIlDNkRb3gOQFv/djfDtprxsiMtPKJgKFiYT/Gi87xMaII9Iwnu1oaAt5N9nWZaSfoZjg3kgCGAefR8kZDwAemA0AzBF8zZCUCuwQQ4N6eNzBzOrYU2VagIHtwBEC4XwFkvDVXYPXYHMBowuyb8OD1DICcO29WAlidOd273qnpCEHpXMm3uteDzIw7iWg0kHcV8KXgtfDAtd//zbxvDOgGTkTiqc1zKjmQ9wngY1yshgEY+n7m9b10sm/tfwLvJKJRKB9XSF/ONvieDgMG+DK+mzjb2/ZYYCBvF+ABE8X89LezDYs3Xh0BJWeWPcWSjnNSXl0gaDUQyHT0paG/crVMcrYbKoeFBjMv9B2qB3z27+V/AMMfBzrIUonAAAAAAElFTkSuQmCC";
 
     this.logo.render = function (ctx) {
         var gradient = ctx.createLinearGradient(
@@ -1082,7 +1029,7 @@ IDE_Morph.prototype.createControlBar = function () {
     this.controlBar.settingsButton = settingsButton; // for menu positioning
 
     // cloudButton
- button = new ToggleButtonMorph(
+    button = new ToggleButtonMorph(
         null, //colors,
         this, // the IDE is the target
         'cloudMenu',
@@ -1093,7 +1040,7 @@ IDE_Morph.prototype.createControlBar = function () {
         () => !isNil(this.cloud.username) // query
     );
 
-   button.hasNeutralBackground = true;
+    button.hasNeutralBackground = true;
     button.corner = 12;
     button.color = colors[0];
     button.highlightColor = colors[1];
@@ -1203,7 +1150,7 @@ IDE_Morph.prototype.createControlBar = function () {
             return;
         }
         txt = new StringMorph(
-            prefix + (myself.projectName || localize('Snap! Jr.')) + suffix,
+            prefix + (myself.projectName || localize('untitled')) + suffix,
             14,
             'sans-serif',
             true,
@@ -3218,18 +3165,18 @@ IDE_Morph.prototype.snapMenu = function () {
     menu.addItem('About...', 'aboutSnap');
     menu.addLine();
     menu.addItem(
-        'Reference manual',
+        'Original Snap! Reference Manual',
         () => {
             var url = this.resourceURL('help', 'SnapManual.pdf');
             window.open(url, 'SnapReferenceManual');
         }
     );
     menu.addItem(
-        'Snap! website',
-        () => window.open('https://snap.berkeley.edu/', 'SnapWebsite')
+        'Snap! Jr. Website',
+        () => window.open('https://snapjr.wixsite.com/snapjr/', 'SnapWebsite')
     );
     menu.addItem(
-        'Download source',
+        'Download Original Snap! Source',
         () => window.open(
                 'https://github.com/jmoenig/Snap/releases/latest',
                 'SnapSource'
@@ -3255,6 +3202,179 @@ IDE_Morph.prototype.snapMenu = function () {
         );
     }
     menu.popup(world, this.logo.bottomLeft());
+};
+
+IDE_Morph.prototype.cloudMenu = function () {
+    var menu,
+        world = this.world(),
+        pos = this.controlBar.cloudButton.bottomLeft(),
+        shiftClicked = (world.currentKey === 16);
+
+    if (location.protocol === 'file:' && !shiftClicked) {
+        this.showMessage('cloud unavailable without a web server.');
+        return;
+    }
+
+    menu = new MenuMorph(this);
+    if (shiftClicked) {
+        menu.addItem(
+            'url...',
+            'setCloudURL',
+            null,
+            new Color(100, 0, 0)
+        );
+        menu.addLine();
+    }
+    if (!this.cloud.username) {
+        menu.addItem(
+            'Login...',
+            'initializeCloud'
+        );
+        menu.addItem(
+            'Signup...',
+            'createCloudAccount'
+        );
+        menu.addItem(
+            'Reset Password...',
+            'resetCloudPassword'
+        );
+        menu.addItem(
+            'Resend Verification Email...',
+            'resendVerification'
+        );
+    } else {
+        menu.addItem(
+            localize('Logout') + ' ' + this.cloud.username,
+            'logout'
+        );
+        menu.addItem(
+            'Change Password...',
+            'changeCloudPassword'
+        );
+    }
+    if (this.hasCloudProject()) {
+        menu.addLine();
+        menu.addItem(
+            'Open in Community Site',
+            () => {
+                var dict = this.urlParameters();
+                window.open(
+                    this.cloud.showProjectPath(
+                        dict.Username, dict.ProjectName
+                    ),
+                    '_blank'
+                );
+            }
+        );
+    }
+    if (shiftClicked) {
+        menu.addLine();
+        menu.addItem(
+            'export project media only...',
+            () => {
+                if (this.projectName) {
+                    this.exportProjectMedia(this.projectName);
+                } else {
+                    this.prompt(
+                        'Export Project As...',
+                        name => this.exportProjectMedia(name),
+                        null,
+                        'exportProject'
+                    );
+                }
+            },
+            null,
+            this.hasChangedMedia ? new Color(100, 0, 0) : new Color(0, 100, 0)
+        );
+        menu.addItem(
+            'export project without media...',
+            () => {
+                if (this.projectName) {
+                    this.exportProjectNoMedia(this.projectName);
+                } else {
+                    this.prompt(
+                        'Export Project As...',
+                        name => this.exportProjectNoMedia(name),
+                        null,
+                        'exportProject'
+                    );
+                }
+            },
+            null,
+            new Color(100, 0, 0)
+        );
+        menu.addItem(
+            'export project as cloud data...',
+            () => {
+                if (this.projectName) {
+                    this.exportProjectAsCloudData(this.projectName);
+                } else {
+                    this.prompt(
+                        'Export Project As...',
+                        name => this.exportProjectAsCloudData(name),
+                        null,
+                        'exportProject'
+                    );
+                }
+            },
+            null,
+            new Color(100, 0, 0)
+        );
+        menu.addLine();
+        menu.addItem(
+            'open shared project from cloud...',
+            () => {
+                this.prompt(
+                    'Author nameâ€¦',
+                    usr => {
+                        this.prompt(
+                            'Project name...',
+                            prj => {
+                                this.showMessage(
+                                    'Fetching project\nfrom the cloud...'
+                                );
+                                this.cloud.getPublicProject(
+                                    prj,
+                                    usr.toLowerCase(),
+                                    projectData => {
+                                        var msg;
+                                        if (
+                                            !Process.prototype.isCatchingErrors
+                                        ) {
+                                            window.open(
+                                                'data:text/xml,' + projectData
+                                            );
+                                        }
+                                    this.nextSteps([
+                                        () => {
+                                            msg = this.showMessage(
+                                                'Opening project...'
+                                            );
+                                        },
+                                        () => {
+                                            this.rawOpenCloudDataString(
+                                                projectData
+                                            );
+                                            msg.destroy();
+                                        },
+                                    ]);
+                                },
+                                this.cloudError()
+                            );
+                        },
+                        null,
+                        'project'
+                    );
+                },
+                null,
+                'project'
+                );
+            },
+            null,
+            new Color(100, 0, 0)
+        );
+    }
+    menu.popup(world, pos);
 };
 
 IDE_Morph.prototype.settingsMenu = function () {
@@ -3517,7 +3637,7 @@ IDE_Morph.prototype.settingsMenu = function () {
         },
         MorphicPreferences.isFlat,
         'uncheck for default\nGUI design',
-        'check for alternative\nGUI design',
+        'check for 3D\nGUI design',
         false
     );
     addPreference(
@@ -4258,10 +4378,10 @@ IDE_Morph.prototype.aboutSnap = function () {
         + '\ncountless bugfixes and optimizations'
         + '\nBernat Romagosa: Countless contributions'
         + '\nBartosz Leper: Retina Display Support'
-        + '\nZhenlei Jia and Dariusz Dorożalski: IME text editing'
+        + '\nZhenlei Jia and Dariusz DoroÅ¼alski: IME text editing'
         + '\nKen Kahn: IME support and countless other contributions'
-        + '\nJosep Ferràndiz: Video Motion Detection'
-        + '\nJoan Guillén: Countless contributions'
+        + '\nJosep FerrÃ ndiz: Video Motion Detection'
+        + '\nJoan GuillÃ©n: Countless contributions'
         + '\nKartik Chandra: Paint Editor'
         + '\nCarles Paredes: Initial Vector Paint Editor'
         + '\n"Ava" Yuan Yuan, Dylan Servilla: Graphic Effects'
@@ -4269,7 +4389,7 @@ IDE_Morph.prototype.aboutSnap = function () {
         + '\nBrian Broll: Many bugfixes and optimizations'
         + '\nIan Reynolds: UI Design, Event Bindings, '
         + 'Sound primitives'
-        + '\nJadga Hügle: Icons and countless other contributions'
+        + '\nJadga HÃ¼gle: Icons and countless other contributions'
         + '\nIvan Motyashov: Initial Squeak Porting'
         + '\nLucas Karahadian: Piano Keyboard Design'
         + '\nDavide Della Casa: Morphic Optimizations'
@@ -4319,7 +4439,7 @@ IDE_Morph.prototype.aboutSnap = function () {
         return tm;
     }
 
-    dlg.inform('About Snap', aboutTxt, world, this.logo.cachedTexture);
+    dlg.inform('About Snap! Jr.', aboutTxt, world, this.logo.cachedTexture);
     btn1 = dlg.buttons.children[0];
     translatorsBtn = dlg.addButton(
         () => {

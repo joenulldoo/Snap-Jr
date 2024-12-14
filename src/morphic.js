@@ -1308,7 +1308,7 @@ var standardSettings = {
     useSliderForInput: false,
     isTouchDevice: false, // turned on by touch events, don't set
     rasterizeSVGs: false,
-    isFlat: false,
+    isFlat: true,
     grabThreshold: 5,
     showHoles: false
 };
